@@ -37,6 +37,24 @@
  * @param theme_config $theme The theme config object.
  * @return string The parsed CSS The parsed CSS.
  */
+ 
+ /**
+ * Include the Fonts.
+ */
+
+function theme_learnmoodle_set_fontwww($css) {
+    global $CFG, $PAGE;
+    if(empty($CFG->themewww)){
+        $themewww = $CFG->wwwroot."/theme";
+    } else {
+        $themewww = $CFG->themewww;
+    }
+    $tag = '[[setting:fontwww]]';
+    $css = str_replace($tag, $themewww.'/learnmoodle/fonts/', $css);
+    return $css;
+}
+
+
 function theme_learnmoodle_process_css($css, $theme) {
     global $CFG;
 
@@ -52,9 +70,8 @@ function theme_learnmoodle_process_css($css, $theme) {
     }
     $css = theme_learnmoodle_set_customcss($css, $customcss);
 
-    // Hack to avoid the use of relative URLs for fonts in CSS files.
-    $css = str_replace('[[fontsfolder]]', $CFG->httpswwwroot . '/theme/learnmoodle/fonts', $css);
-
+    // Set the font path.
+    $css = theme_learnmoodle_set_fontwww($css);
     return $css;
 }
 

@@ -25,9 +25,12 @@ body {
 }
 
 .navbar .navbar-inner a.brand {
-    background: url([[pix:theme|logo]]) no-repeat 0 center;
-    width: 175px;
-    margin-left: 0;
+    background: url([[pix:theme|logo-learn-white]]) no-repeat 0 center;
+    width: 232px;
+    min-height: 48px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 5px 20px;
 }
 
 /*.bold,
